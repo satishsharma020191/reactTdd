@@ -32,5 +32,21 @@ describe("App", () => {
     it("add a new gift to the rendered list", () => {
       expect(app.find(".gift-list").children().length).toEqual(1);
     });
+
+    it('creates a gift component', ()=>{
+      expect(app.find('Gift').exists()).toBe(true);
+    });
   });
+
+  describe('and the user want to remove the added gift', ()=>{
+    beforeEach(()=>{
+      app.instance().removeGift(1);
+    });
+
+    it('remove gift from `state`', ()=>{
+      expect(app.state().gifts).toEqual([]);
+    })
+  })
+
+
 });
